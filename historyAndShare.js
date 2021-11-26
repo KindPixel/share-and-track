@@ -52,24 +52,30 @@ var cookieList = function(cookieName) {
 $(document).ready(function() {
     if(typeof $.cookie("history") !== undefined) {
         var historyList = new cookieList("history");
+        var linkList = new cookieList("histlink");
     }
 
     var title = $(document).find("title").text();
+    var link = $(location).attr("href");
     
     historyList.add(title);
+    linkList.add(link);
 
     var pageArray = new Array();
+    var linkArray = new Array();
 
     pageArray = historyList.items();
+    linkArray = linkList.items();
 
     console.log(pageArray);
 
     const distinctPage = [...new Set(pageArray)];
+    const distinctLink = [...new Set(linkArray)]
 
     console.log(distinctPage);
 
     for (var key in distinctPage) {
-        $('#table').append('<tr><td>' + distinctPage[key] + '</td></tr>');
+        $('#table').append('<tr><td><a href="'+ distinctLink[key] +'">' + distinctPage[key] + '</a></td></tr>');
     }
 });
 
