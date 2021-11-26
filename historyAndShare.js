@@ -70,7 +70,7 @@ $(document).ready(function() {
     console.log(pageArray);
 
     const distinctPage = [...new Set(pageArray)];
-    const distinctLink = [...new Set(linkArray)]
+    const distinctLink = [...new Set(linkArray)];
 
     console.log(distinctPage);
 
